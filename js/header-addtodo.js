@@ -11,7 +11,7 @@ Vue.component('header-addtodo', {
 			<h1>todos</h1>
 			<input
 				class="new-todo"
-				placeholder="做的什么？('Enter'添加)"
+				placeholder="做点什么？('Enter'添加)"
 				autofocus
 				:value="value"
 				@input="$emit('input', $event.target.value)"

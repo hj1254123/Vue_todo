@@ -1,11 +1,11 @@
 // 初始化本地数据
 ;(function() {
 	var d = window.localStorage.todosData
-	if(d == 'undefined') {
+	if(d === undefined) {
 		window.localStorage.todosData = JSON.stringify([])
 	}
 	var a = window.localStorage.allOrNone
-	if(a == 'undefined') {
+	if(a === undefined) {
 		window.localStorage.allOrNone = JSON.stringify(false)
 	}
 })()
@@ -175,6 +175,10 @@ var vm = new Vue({
 // 载入页面时设置一次，vm.hash
 ;(function() {
 	var hash = location.hash
+	if (hash === '') {
+		vm.hash = '/'
+		return
+	}
 	vm.hash = hash.slice(1)
 })()
 
