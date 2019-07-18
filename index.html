@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>TodoMVC</title>
-	<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-	<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
-	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="./node_modules/todomvc-common/base.css">
+	<link rel="stylesheet" href="./node_modules/todomvc-app-css/index.css">
+	<link rel="stylesheet" href="./css/app.css">
 </head>
 
 <body>
@@ -15,33 +15,16 @@
 
 	<section id="app" class="todoapp">
 		<!-- 添加任务 -->
-		<header-addtodo 
-			v-model="inputvalue"
-			@addtodo="addtodo"
-		>
+		<header-addtodo v-model="inputvalue" @addtodo="addtodo">
 		</header-addtodo>
 		<section class="main">
-			<input
-				id="toggle-all"
-				class="toggle-all"
-				type="checkbox"
-				v-model="allOrNone"
-			>
+			<input id="toggle-all" class="toggle-all" type="checkbox" v-model="allOrNone">
 			<!-- 选中任务全部完成/取消全不选 -->
-			<label 
-				for="toggle-all"
-				@click="allOrNoneTodos"
-			></label>
+			<label for="toggle-all" @click="allOrNoneTodos"></label>
 			<!-- todo列表 -->
 			<ul class="todo-list">
-				<todo-list
-					v-for="item in filterTodos"
-					:key="item.id"
-					:item="item"
-					@deltodo="deltodo"
-					@done_toggle="doneToggle"
-					@change-value="updateItem"
-				>
+				<todo-list v-for="item in filterTodos" :key="item.id" :item="item" @deltodo="deltodo"
+					@done_toggle="doneToggle" @change-value="updateItem">
 				</todo-list>
 			</ul>
 		</section>
@@ -55,34 +38,22 @@
 					通过路由的hash值判断排它
 				-->
 				<li>
-					<a
-						:class="[hash === '/' ? 'selected' : '']"
-						href="#/"
-					>all</a>
+					<a :class="[hash === '/' ? 'selected' : '']" href="#/">all</a>
 				</li>
 				<li>
-					<a
-						:class="[hash === '/active' ? 'selected' : '']"
-						href="#/active"
-					>进行中</a>
+					<a :class="[hash === '/active' ? 'selected' : '']" href="#/active">进行中</a>
 				</li>
 				<li>
-					<a
-						:class="[hash === '/completed' ? 'selected' : '']"
-						href="#/completed"
-					>已完成</a>
+					<a :class="[hash === '/completed' ? 'selected' : '']" href="#/completed">已完成</a>
 				</li>
 			</ul>
 			<!-- 点击删除已完成任务 -->
-			<button
-				class="clear-completed"
-				@click="clearCompleted"
-			>清除'已完成'任务</button>
+			<button class="clear-completed" @click="clearCompleted">清除'已完成'任务</button>
 		</footer>
 
 	</section>
 
-	<script src="node_modules/todomvc-common/base.js"></script>
+	<script src="./node_modules/todomvc-common/base.js"></script>
 	<!-- 开发环境 -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
 	<!-- 生成环境 -->
