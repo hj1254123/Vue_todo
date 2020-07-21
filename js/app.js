@@ -1,9 +1,11 @@
 // 初始化本地数据
 ;(function() {
+	// todo数据
 	var d = window.localStorage.todosData
 	if(d === undefined) {
 		window.localStorage.todosData = JSON.stringify([])
 	}
+	// 全选按钮状态
 	var a = window.localStorage.allOrNone
 	if(a === undefined) {
 		window.localStorage.allOrNone = JSON.stringify(false)
@@ -16,6 +18,7 @@ var vm = new Vue({
 		todosData: JSON.parse(window.localStorage.todosData) ,
 		inputvalue: '',
 		hash: '/',
+		// 控制全选按钮状态
 		allOrNone: JSON.parse(window.localStorage.allOrNone),
 	},
 	// 计算属性
@@ -58,10 +61,10 @@ var vm = new Vue({
 				return this.filterDone
 			}
 		},
-		// 检查todos是否为空
+		// 检查todos是否为空，切换全选按钮状态
 		detectionTaskIsEmpty: function() {
 			var b = this.todosData.length
-			// 为空把全选按钮的激活状态取消
+			// 把全选按钮的激活状态取消
 			if (b === 0) {
 				this.allOrNone = false
 			}
@@ -82,7 +85,7 @@ var vm = new Vue({
 
 			// 获取todo数据
 			var d = this.todosData
-			// 设置新todo，id
+			// 设置新todoId
 			var id
 			if(d.length) {
 				id = (d[d.length - 1].id + 1)
@@ -105,8 +108,8 @@ var vm = new Vue({
 		deltodo: function(id) {
 			// console.log(id)
 			var d = this.todosData
+			// 找到要删除的任务，并删除
 			d.forEach(function(item, index) {
-				// console.log(item)
 				if(item.id === id) {
 					d.splice(index, 1)
 					return

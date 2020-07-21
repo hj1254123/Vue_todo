@@ -9,6 +9,7 @@ Vue.component('todo-list', {
 	},
 	template: `
 	<li
+		
 		:class="{completed: item.active}"
 		@dblclick="editActive=true"
 	>
